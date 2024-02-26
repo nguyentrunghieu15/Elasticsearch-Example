@@ -1,8 +1,7 @@
 package configs
 
 import (
-	"fmt"
-
+	"github.com/Valgard/godotenv"
 	"github.com/vrischmann/envconfig"
 )
 
@@ -10,11 +9,15 @@ type Config struct {
 	Elastic ElasticConf
 }
 
-func Init() (*Config, error) {
+func Init() *Config {
+	dotenv := godotenv.New()
+	if err := dotenv.Load(".env"); err != nil {
+		panic(err)
+	}
 	var conf Config
 	err := envconfig.Init(&conf)
 	if err != nil {
-		fmt.Printf("err=%s\n", err)
+		panic(err)
 	}
-	return &conf, err
+	return &conf
 }
