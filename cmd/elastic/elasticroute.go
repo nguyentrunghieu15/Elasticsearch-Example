@@ -20,5 +20,8 @@ func InitOrderElasticRoute(r *gin.RouterGroup, e *elasticservice.ElasticService)
 		ctx.GET("/search-all", con.GetAll)
 		ctx.GET("/search-ids", con.SearchIds)
 		ctx.GET("/stats-order", con.StatisticOrderAmount)
+		ctx.POST("/update-order-by-id", con.UpdateOrderById)
+		ctx.POST("/create-order", con.CreateOrder)
+		ctx.DELETE("/delete-order", con.DeleteOrder)
 	}
 }
