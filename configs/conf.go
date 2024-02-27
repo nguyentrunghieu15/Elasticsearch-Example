@@ -1,7 +1,9 @@
 package configs
 
 import (
-	"github.com/Valgard/godotenv"
+	"log"
+
+	"github.com/joho/godotenv"
 	"github.com/vrischmann/envconfig"
 )
 
@@ -10,14 +12,13 @@ type Config struct {
 }
 
 func Init() *Config {
-	dotenv := godotenv.New()
-	if err := dotenv.Load(".env"); err != nil {
-		panic(err)
+	if err := godotenv.Load(".env"); err != nil {
+		log.Default().Panic(err)
 	}
 	var conf Config
 	err := envconfig.Init(&conf)
 	if err != nil {
-		panic(err)
+		log.Default().Panic(err)
 	}
 	return &conf
 }

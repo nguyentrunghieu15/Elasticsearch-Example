@@ -5,11 +5,11 @@ import (
 )
 
 type ElasticService struct {
-	OrderIndex OrderIndex
+	OrderIndex *OrderIndex
 }
 
-func Init(elasticClient *elasticsearch.TypedClient) *ElasticService {
+func Init(elasticClient *elasticsearch.Client) *ElasticService {
 	return &ElasticService{
-		OrderIndex: elasticClient,
+		OrderIndex: InitOrderIndex(elasticClient),
 	}
 }

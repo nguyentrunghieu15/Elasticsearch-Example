@@ -21,3 +21,4 @@
 # vendor/
 # environment
 .env
+cert
