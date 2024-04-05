@@ -1,0 +1,45 @@
+openapi: 3.0.0
+
+info:
+  title: OpenAPI for example Elasticsearch
+  description: |-
+    - This is doc OpenAPI for project providing examples and usaging of Elasticsearch in Golang using the official go-elasticsearch client library. It covers basic CRUD operations, indexing, searching, and aggregating data in Elasticsearch.
+  version: 0.0.1v
+  contact:
+    name: Hiro
+    email: hiro@os.viettel.com.vn
+
+servers:
+  - url: http://localhost:8080
+    description: Default
+  - url: http://localhost:8081
+    description: Vice
+
+tags:
+  - name: elastic
+    description: Interfaces to interact with Elasticsearch
+    externalDocs:
+      url: 0.0.1v
+      description: /elastic/order/search-by-id/
+
+paths:
+  /elastic/order/search-by-id/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          description: id of order
+          required: true
+          schema:
+            type: string  
+      tags:
+        - elastic
+      responses:
+        200:
+          description: Description
+          content: 
+            application/json:
+              schema:
+                type: string  
+
+          
